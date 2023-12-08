@@ -23,8 +23,7 @@ st.markdown(custom_html, unsafe_allow_html=True)
 #st.subheader('Only Sarcastic Responses')  
 
 
-#openai_api_key = st.secrets["OPENAI_API_KEY"]
-openai_api_key = "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"
+openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 chat = ChatOpenAI(temperature=1, openai_api_key=openai_api_key)
 
