@@ -17,6 +17,9 @@ hide_st_style = """
 header {visibility:hidden;}
 
 </style>
+
+<footer>Developed By <b>Bata Nols</b></footer>
+
 """
 st.markdown(hide_st_style,unsafe_allow_html=True)
 
