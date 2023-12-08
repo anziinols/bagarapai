@@ -17,9 +17,6 @@ hide_st_style = """
 header {visibility:hidden;}
 
 </style>
-
-<footer>Developed By <b>Bata Nols</b></footer>
-
 """
 st.markdown(hide_st_style,unsafe_allow_html=True)
 
@@ -77,3 +74,18 @@ for i, message in enumerate(st.session_state['chat_history']):
         with st.chat_message("AI"):  
             #st.image("sarcastic-logo.png",caption=None,width=20)
             st.success(message.content)
+
+
+# Custom HTML for the footer
+custom_footer = """
+<style>
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+</style>
+<footer>Developed by <b>Bata Nols</b> </footer>
+"""    
+st.markdown(custom_footer, unsafe_allow_html=True)
