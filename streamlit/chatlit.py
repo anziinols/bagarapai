@@ -16,6 +16,7 @@ hide_st_style = """
 <style>
 #MainMenu {visibility:hidden;}
 header {visibility:hidden;}
+#aitopia {visibility:hidden;}
 
 </style>
 """
