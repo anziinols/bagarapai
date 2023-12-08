@@ -10,6 +10,7 @@ custom_html = """
     
 </div>
 <h4 style="text-align: center;">Only Sarcastic Responses</h4>
+<p style="text-align: center;">By Bata Nols</p>
 """
 hide_st_style = """
 <style>
