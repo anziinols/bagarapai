@@ -1,6 +1,2 @@
-langchain
-langchain.chat_models
-langchain.schema
-openai
-streamlit
-time
+langchain==0.0.348
+openai==0.27.8
