@@ -82,7 +82,7 @@ custom_footer = """
 footer {
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 10%;
   width: 100%;
 }
 </style>
