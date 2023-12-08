@@ -14,6 +14,7 @@ custom_html = """
 hide_st_style = """
 <style>
 #MainMenu {visibility:hidden;}
+header {visibility:hidden;}
 footer {visibility:hidden;}
 </style>
 """
