@@ -14,7 +14,7 @@ custom_html = """
 
 # Display the custom HTML
 
-st.image("sarcastic-logo.png",caption=None,width=50)
+#st.image("sarcastic-logo.png",caption=None,width=50)
 st.markdown(custom_html, unsafe_allow_html=True)
 
 
