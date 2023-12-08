@@ -63,6 +63,6 @@ for i, message in enumerate(st.session_state['chat_history']):
             st.info(message.content)
             
     elif isinstance(message, AIMessage):
-        with st.chat_message("Chatbot", avatar="sarcastic-logo.png"):  
+        with st.chat_message("Chatbot"):  
             #st.image("sarcastic-logo.png",caption=None,width=20)
             st.success(message.content)
