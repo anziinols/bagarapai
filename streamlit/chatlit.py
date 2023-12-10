@@ -30,7 +30,7 @@ st.markdown(custom_html, unsafe_allow_html=True)
 
 #st.title('Bagarap AI')
 
-#st.subheader('Only Sarcastic Responses')  
+#st.subheader('Sarcastic Responses')  
 
 
 openai_api_key = st.secrets["OPENAI_API_KEY"]
