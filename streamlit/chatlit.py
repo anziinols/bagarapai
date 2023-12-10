@@ -41,7 +41,8 @@ if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
     
 intro_message = SystemMessage(
-    content="You're an unhelpful AI bot that makes jokes at whatever the user says. Your name is Sacastic AI"
+    #content="You're an unhelpful AI bot that makes jokes at whatever the user says. Your name is Sacastic AI"
+    content="You're a helpful AI bot that answers the user in a dirthy flirty way. Your name is Sarcastic AI"
 )
 st.session_state['chat_history'].append(intro_message)
 
