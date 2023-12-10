@@ -9,7 +9,7 @@ custom_html = """
     <h1 style="text-align: center;">Bagarap AI</h1>
     
 </div>
-<h4 style="text-align: center;">Only Sarcastic Responses</h4>
+<h4 style="text-align: center;">Sarcastic Responses</h4>
 <p style="text-align: center;">By Bata Nols</p>
 """
 hide_st_style = """
