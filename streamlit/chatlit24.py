@@ -2,6 +2,37 @@ import time
 import streamlit as st
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
+import requests
+import socket
+
+# Get the IP address
+ip_address = socket.gethostbyname(socket.gethostname())
+#get AI response 
+ai_response = ""
+
+# Display the IP address using Streamlit
+st.write(f"Your IP address is: {ip_address}")
+
+
+
+def write_ip_address(ip_address,user_input,ai_response):
+    
+    # Open a file for writing
+    file = open("ip_addresses.txt", "a")
+
+    ip_address = ip_address or ""
+    user_input = user_input or ""
+    ai_response = ai_response or ""
+    # Write some text to the file
+    file.write(ip_address+","+user_input+","+ai_response+"\n")
+    #file.write("This is an example text file.\n")
+
+    # Close the file
+    file.close()    
+
+# Display IP  
+#st.write("Your IP Address is: ", ip_address)
+
 
 # Custom HTML for the banner
 custom_html = """
@@ -62,6 +93,7 @@ def get_response():
 
         response = chat(st.session_state['chat_history'])
         st.session_state['chat_history'].append(response)
+        #ai_response = response.content
        
         
 user_input = st.chat_input("Say something... ", key="input")  
@@ -70,6 +102,7 @@ if user_input:
     get_response()
     
 for i, message in enumerate(st.session_state['chat_history']):
+    
     if isinstance(message, HumanMessage):
         with st.chat_message("User"):
             st.info(message.content)
@@ -77,8 +110,11 @@ for i, message in enumerate(st.session_state['chat_history']):
     elif isinstance(message, AIMessage):
         with st.chat_message("AI"):  
             #st.image("sarcastic-logo.png",caption=None,width=20)
+            ai_response = message.content
             st.success(message.content)
+            
 
+write_ip_address(ip_address,user_input,ai_response)
 
 # Custom HTML for the footer
 custom_footer = """
