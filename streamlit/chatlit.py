@@ -5,6 +5,19 @@ from langchain.schema import HumanMessage, SystemMessage, AIMessage
 import requests
 import socket
 
+def get_public_ip():
+    try:
+        response = requests.get('https://httpbin.org/ip')
+        if response.status_code == 200:
+            return response.json()['origin']
+        else:
+            print("Failed to retrieve public IP address:", response.status_code)
+    except Exception as e:
+        print("An error occurred:", str(e))
+
+public_ip = get_public_ip()
+st.write("Your public IP address is:", public_ip)
+
 # Get the IP address
 ip_address = socket.gethostbyname(socket.gethostname())
 #get AI response 
