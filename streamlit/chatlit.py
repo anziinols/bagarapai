@@ -16,11 +16,11 @@ def get_public_ip():
         print("An error occurred:", str(e))
 
 public_ip = get_public_ip()
-st.write("Your public IP address is:", public_ip)
+#st.write("Your public IP address is:", public_ip)
 
 
 # Get the IP address
-ip_address = socket.gethostbyname(socket.gethostname())
+#ip_address = socket.gethostbyname(socket.gethostname())
 #get AI response 
 ai_response = ""
 
