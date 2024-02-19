@@ -34,7 +34,7 @@ st.write(f"Your IP address is: {ip_address}")
 def write_ip_address(ip_address,user_input,ai_response):
     
     # Open a file for writing
-    file = open("https://github.com/anziinols/bagarapai/blob/main/streamlit/ip_addresses.txt", "a")
+    file = open("ip_addresses.txt", "a")
 
     ip_address = ip_address or ""
     user_input = user_input or ""
