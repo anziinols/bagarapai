@@ -18,10 +18,13 @@ def get_public_ip():
 public_ip = get_public_ip()
 st.write("Your public IP address is:", public_ip)
 
+
 # Get the IP address
 ip_address = socket.gethostbyname(socket.gethostname())
 #get AI response 
 ai_response = ""
+
+ip_address = public_ip
 
 # Display the IP address using Streamlit
 st.write(f"Your IP address is: {ip_address}")
