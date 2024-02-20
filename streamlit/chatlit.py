@@ -160,12 +160,12 @@ def write_to_remote_file(host, username, password, remote_filepath, content):
         ftp.login(username, password)
 
         # Write content to the remote file
-        with ftp.open(remote_filepath, 'w') as remote_file:
-            remote_file.write(content.encode())
+        with ftp.storbinary('STOR ' + remote_filepath, content.encode()) as remote_file:
+            pass
 
-        st.write("Successfully wrote to remote file:", remote_filepath)
+        print("Successfully wrote to remote file:", remote_filepath)
     except Exception as e:
-        st.write("Failed to write to remote fileAn error occurred:", str(e))
+        print("An error occurred:", str(e))
     finally:
         # Close the FTP connection
         ftp.quit()
