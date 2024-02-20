@@ -150,19 +150,6 @@ st.markdown(custom_footer, unsafe_allow_html=True)
 
 
 # Write to file 
-# Connect to the FTP Server
-#    try:
-ftp = ftplib.FTP('sg1-ts2.a2hosting.com')
-ftp.login(user='dakoiim1', passwd='72lS6Qoju7)(XX')
-
-# List Files
-st.write("\nListing Contents:\n")
-st.write(ftp.dir())
-
-# Disconnect after finishing work
-ftp.quit()
-#    except Exception as e:
-#        print(f"An error occurred while connecting to the FTP server: {e}")
 
 from ftplib import FTP
 
@@ -176,9 +163,9 @@ def write_to_remote_file(host, username, password, remote_filepath, content):
         with ftp.open(remote_filepath, 'w') as remote_file:
             remote_file.write(content.encode())
 
-        print("Successfully wrote to remote file:", remote_filepath)
+        st.write("Successfully wrote to remote file:", remote_filepath)
     except Exception as e:
-        print("An error occurred:", str(e))
+        st.write("Failed to write to remote fileAn error occurred:", str(e))
     finally:
         # Close the FTP connection
         ftp.quit()
@@ -187,7 +174,7 @@ def write_to_remote_file(host, username, password, remote_filepath, content):
 host = 'sg1-ts2.a2hosting.com'
 username = 'dakoiim1'
 password = '72lS6Qoju7)(XX'
-remote_filepath = 'https://testair.dakoiims.com/filetest/ip_addresses.txt'
+remote_filepath = '/home/dakoiim1/testair.dakoiims.com/filetest/ip_addresses.txt'
 content = 'Hello, this is some content to write to the remote file.'
 
 write_to_remote_file(host, username, password, remote_filepath, content)
