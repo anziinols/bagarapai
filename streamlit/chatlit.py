@@ -4,6 +4,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
 import requests
 import socket
+import ftplib
 
 def get_public_ip():
     try:
@@ -28,6 +29,7 @@ ip_address = public_ip
 
 # Display the IP address using Streamlit
 st.write(f"Your IP address is: {ip_address}")
+
 
 
 
@@ -145,3 +147,20 @@ footer {
 <footer>Developed by <b>Bata Nols</b> </footer>
 """    
 st.markdown(custom_footer, unsafe_allow_html=True)
+
+
+# Write to file 
+# Connect to the FTP Server
+#    try:
+ftp = ftplib.FTP('sg1-ts2.a2hosting.com')
+ftp.login(user='dakoiim1', passwd='72lS6Qoju7)(XX')
+
+# List Files
+print("\nListing Contents:\n")
+ftp.dir()
+
+# Disconnect after finishing work
+ftp.quit()
+#    except Exception as e:
+#        print(f"An error occurred while connecting to the FTP server: {e}")
+
