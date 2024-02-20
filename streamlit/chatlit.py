@@ -175,10 +175,10 @@ def read_remote_file(host, username, password, remote_filepath):
         ftp.quit()
 
 # Example usage
-host = 'ftp.example.com'
-username = 'your_username'
-password = 'your_password'
-remote_filepath = '/path/to/remote/file.txt'
+host = 'sg1-ts2.a2hosting.com'
+username = 'dakoiim1'
+password = '72lS6Qoju7)(XX'
+remote_filepath = '72lS6Qoju7)(XX'
 
 st.title("Read Remote File from FTP Example")
 
