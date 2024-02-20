@@ -153,21 +153,17 @@ st.markdown(custom_footer, unsafe_allow_html=True)
 
 from ftplib import FTP
 
-def read_remote_file(host, username, password, remote_filepath):
+def write_to_remote_file(host, username, password, remote_filepath):
     try:
         # Connect to the FTP server
         ftp = FTP(host)
         ftp.login(username, password)
 
-        # Read content from the remote file
-        content = []
-        def append_content(data):
-            content.append(data.decode())
-        
-        ftp.retrbinary('RETR ' + remote_filepath, append_content)
+        # Write content to the remote file
+        with ftp.open(remote_filepath, 'wb') as remote_file:
+            remote_file.write(content.encode())
 
-        st.write("Successfully read from remote file:", remote_filepath)
-        return ''.join(content)
+        st.write("Successfully wrote to remote file:", remote_filepath)
     except Exception as e:
         st.write("An error occurred:", str(e))
     finally:
@@ -179,16 +175,17 @@ host = 'sg1-ts2.a2hosting.com'
 username = 'dakoiim1'
 password = '72lS6Qoju7)(XX'
 remote_filepath = '/home/dakoiim1/testair.dakoiims.com/filetest/ip_addresses.txt'
+content = 'Hello, this is some content to write to the remote file.'
 
-st.title("Read Remote File from FTP Example")
+st.title("Write  Remote File from FTP Example")
 
 # Display input fields
 host_input = st.text_input("Host", host)
 username_input = st.text_input("Username", username)
 password_input = st.text_input("Password", password, type="password")
 remote_filepath_input = st.text_input("Remote Filepath", remote_filepath)
+content_input = st.text_area("Content", content)
 
 # Read remote file on button click
-if st.button("Read Remote File"):
-    remote_content = read_remote_file(host_input, username_input, password_input, remote_filepath_input)
-    st.write("Content of remote file:", remote_content)
+if st.button("Write to Remote File"):
+    write_to_remote_file(host_input, username_input, password_input, remote_filepath_input, content_input)
