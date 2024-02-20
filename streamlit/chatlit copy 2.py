@@ -19,8 +19,9 @@ def get_public_ip():
 public_ip = get_public_ip()
 #st.write("Your public IP address is:", public_ip)
 
-# Get the IP address
 
+# Get the IP address
+#ip_address = socket.gethostbyname(socket.gethostname())
 #get AI response 
 ai_response = ""
 
@@ -28,6 +29,27 @@ ip_address = public_ip
 
 # Display the IP address using Streamlit
 st.write(f"Your IP address is: {ip_address}")
+
+
+
+
+def write_ip_address(ip_address,user_input,ai_response):
+    
+    # Open a file for writing
+    file = open("ip_addresses.txt", "a")
+
+    ip_address = ip_address or ""
+    user_input = user_input or ""
+    ai_response = ai_response or ""
+    # Write some text to the file
+    file.write(ip_address+","+user_input+","+ai_response+"\n")
+    #file.write("This is an example text file.\n")
+
+    # Close the file
+    file.close()    
+
+# Display IP  
+#st.write("Your IP Address is: ", ip_address)
 
 
 # Custom HTML for the banner
@@ -126,4 +148,44 @@ footer {
 """    
 st.markdown(custom_footer, unsafe_allow_html=True)
 
+
 # Write to file 
+
+from ftplib import FTP
+
+def write_to_remote_file(host, username, password, remote_filepath):
+    try:
+        # Connect to the FTP server
+        ftp = FTP(host)
+        ftp.login(username, password)
+
+        # Write content to the remote file
+        with ftp.open(remote_filepath, 'wb') as remote_file:
+            remote_file.write(content.encode())
+
+        st.write("Successfully wrote to remote file:", remote_filepath)
+    except Exception as e:
+        st.write("An error occurred:", str(e))
+    finally:
+        # Close the FTP connection
+        ftp.quit()
+
+# Example usage
+host = 'sg1-ts2.a2hosting.com'
+username = 'dakoiim1'
+password = '72lS6Qoju7)(XX'
+remote_filepath = '/home/dakoiim1/testair.dakoiims.com/filetest/ip_addresses.txt'
+content = 'Hello, this is some content to write to the remote file.'
+
+st.title("Write  Remote File from FTP Example")
+
+# Display input fields
+host_input = st.text_input("Host", host)
+username_input = st.text_input("Username", username)
+password_input = st.text_input("Password", password, type="password")
+remote_filepath_input = st.text_input("Remote Filepath", remote_filepath)
+content_input = st.text_area("Content", content)
+
+# Read remote file on button click
+if st.button("Write to Remote File"):
+    write_to_remote_file(host_input, username_input, password_input, remote_filepath_input, content_input)
