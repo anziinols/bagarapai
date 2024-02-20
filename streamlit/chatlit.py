@@ -153,17 +153,21 @@ st.markdown(custom_footer, unsafe_allow_html=True)
 
 from ftplib import FTP
 
-def write_to_remote_file(host, username, password, remote_filepath, content):
+def read_remote_file(host, username, password, remote_filepath):
     try:
         # Connect to the FTP server
         ftp = FTP(host)
         ftp.login(username, password)
 
-        # Write content to the remote file
-        with ftp.storbinary('STOR ' + remote_filepath, content.encode()) as remote_file:
-            pass
+        # Read content from the remote file
+        content = []
+        def append_content(data):
+            content.append(data.decode())
+        
+        ftp.retrbinary('RETR ' + remote_filepath, append_content)
 
-        st.write("Successfully wrote to remote file:", remote_filepath)
+        st.write("Successfully read from remote file:", remote_filepath)
+        return ''.join(content)
     except Exception as e:
         st.write("An error occurred:", str(e))
     finally:
@@ -175,7 +179,8 @@ host = 'sg1-ts2.a2hosting.com'
 username = 'dakoiim1'
 password = '72lS6Qoju7)(XX'
 remote_filepath = '/home/dakoiim1/testair.dakoiims.com/filetest/ip_addresses.txt'
-content = 'Hello, this is some content to write to the remote file.'
 
-write_to_remote_file(host, username, password, remote_filepath, content)
+remote_content = read_remote_file(host, username, password, remote_filepath)
+st.write("Content of remote file:", remote_content)
+
 
