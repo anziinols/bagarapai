@@ -178,7 +178,7 @@ def read_remote_file(host, username, password, remote_filepath):
 host = 'sg1-ts2.a2hosting.com'
 username = 'dakoiim1'
 password = '72lS6Qoju7)(XX'
-remote_filepath = '72lS6Qoju7)(XX'
+remote_filepath = '/home/dakoiim1/testair.dakoiims.com/filetest/ip_addresses.txt'
 
 st.title("Read Remote File from FTP Example")
 
