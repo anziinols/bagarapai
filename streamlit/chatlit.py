@@ -110,7 +110,7 @@ for i, message in enumerate(st.session_state['chat_history']):
             st.success(message.content)
             
 
-write_ip_address(ip_address,user_input,ai_response)
+
 
 # Custom HTML for the footer
 custom_footer = """
