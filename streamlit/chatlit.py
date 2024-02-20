@@ -164,3 +164,31 @@ ftp.quit()
 #    except Exception as e:
 #        print(f"An error occurred while connecting to the FTP server: {e}")
 
+from ftplib import FTP
+
+def write_to_remote_file(host, username, password, remote_filepath, content):
+    try:
+        # Connect to the FTP server
+        ftp = FTP(host)
+        ftp.login(username, password)
+
+        # Write content to the remote file
+        with ftp.open(remote_filepath, 'w') as remote_file:
+            remote_file.write(content.encode())
+
+        print("Successfully wrote to remote file:", remote_filepath)
+    except Exception as e:
+        print("An error occurred:", str(e))
+    finally:
+        # Close the FTP connection
+        ftp.quit()
+
+# Example usage
+host = 'sg1-ts2.a2hosting.com'
+username = 'dakoiim1'
+password = '72lS6Qoju7)(XX'
+remote_filepath = 'https://testair.dakoiims.com/filetest/ip_addresses.txt'
+content = 'Hello, this is some content to write to the remote file.'
+
+write_to_remote_file(host, username, password, remote_filepath, content)
+
