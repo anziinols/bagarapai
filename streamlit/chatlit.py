@@ -27,7 +27,7 @@ ai_response = ""
 ip_address = public_ip
 
 # Display the IP address using Streamlit
-st.write(f"Your IP address is: {ip_address}")
+#st.write(f"Your IP address is: {ip_address}")
 
 
 # Custom HTML for the banner
