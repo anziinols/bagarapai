@@ -156,8 +156,8 @@ ftp = ftplib.FTP('sg1-ts2.a2hosting.com')
 ftp.login(user='dakoiim1', passwd='72lS6Qoju7)(XX')
 
 # List Files
-print("\nListing Contents:\n")
-ftp.dir()
+st.write("\nListing Contents:\n")
+st.write(ftp.dir())
 
 # Disconnect after finishing work
 ftp.quit()
